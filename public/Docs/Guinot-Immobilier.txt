@@ -1,0 +1,40 @@
+Guinot-Immobilier
+
+Mettre en place une Application de Gestion d’une agence immobilière.
+ Cette agence, située au 26 Rue Chastent de Gery, 94800 Villejuif Cedex, 
+ détient plusieurs biens immobilier qui sont confiés par des propriétaires.
+Ces biens, un peu partout dans en France et en Europe sont constitués de Terrains, 
+appartements, appartements meublés, maisons, villa, hôtels, etc.
+
+Les biens sont les propriétés de particuliers qui perçoivent les usufruits,
+ de leur à la fin de chaque mois directement sur leurs comptes bancaires. 
+
+Un bien appartient à un et un seul Client même si ce dernier représente parfois plusieurs membres de sa famille. 
+Mais bien de Clients donnent en Gestion à Guinot-Immobilier plusieurs de leurs biens. 
+
+Chaque propriétaire a un profil Propriétaire sur le site de l’agence, 
+et il sera informé des paiements qui sont faits des biens qu’il a donnés à l’agence.
+
+Ils sont donc mis en location, et des particuliers qui en sont dans le besoin peuvent consulter 
+le site de Guinot-Immobilier pour voir tous les biens mis en location pour faire une demande de location.
+
+La consultation des biens est donc libre, tout le monde peut donc voir les Biens en exposition et envoyer un message à l’agence pour savoir si le Bien est toujours disponible et qu’il peut envisager la visite.
+Si le Bien est libre, le client est convoqué au siège de Guinot-Immobilier pour la visite et l’établissement du contrat, et le client devient alors un Locataire de bien.
+
+Le Contrat de Location Lie un locataire à l’agence, pour un et un seul Bien. 
+Si le Locataire voudrait un autre bien (une seconde maison ou appartement par exemple), il y aura un nouveau contrat.
+
+A l’établissement du contrat, le nouveau locataire, présentera tous les documents nécessaires
+ pour être éligible à une location :
+ - 3 derniers bulletins de salaires,
+ - titre d’identité, 
+ - 2 derniers avis d’imposition, etc ).
+  Et, avant d’avoir les clefs, il fera à l’agence un dépôt garanti (égal au montant du loyer, et un 1e mois de loyer.
+L
+e Loyer est directement geré par le Service de la Comptabilité de l’agence. 
+Il est payé avant le 5 de chaque mois, et dépassé ce délai, il sera facturé au Locataire le 1% de loyer et ceci par Nombre de jour de retard. 
+Il sera déposé sur le compte de l’agence. 
+Une fois versé, l’agence lui établit une quittance le Location qui lui est envoyé par Poste et une copie est remise dans son profil de Locataire
+
+Le Service Comptable, prélève sur le loyer 12% du montant de Loyer, et c’est ce qui servira à payer ses propres employés.
+Le reste sera versé sur le compte du propriétaire du Bien et un message de versement lui est alors envoyé. Et, pour 

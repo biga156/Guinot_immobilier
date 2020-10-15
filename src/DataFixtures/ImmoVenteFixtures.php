@@ -18,7 +18,7 @@ class ImmoVenteFixtures extends Fixture
         
         for($i=1; $i<20; $i++){
             $immovente = new ImmoVente();
-            $immovente->setTitre( "Titre Livre n°$i ")  
+            $immovente->setTitre( "Titre n°$i ")  
                      ->setDescription("Description du Bien Nom $i")  
                      ->setPhoto( "http://placehold.it/300x200")
                      ->setCreatedAt(new \DateTime());
