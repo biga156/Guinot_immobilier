@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guinot-immobilier{% endblock %}
+
+{% block body %}
+
+<div class = "jumbotron">
+       <article>
+            <h2> FORMULAIRE D'ENREGISTREMENT DE NOUVEL ARTICLE </h2>
+            <div class = "metadata"> 
+            </div>         
+       </article>      
+</div>
+<div class="container">
+
+    <div class="container">
+
+        {{ form_start(formLocation) }}
+            {#{ form_row(formLocation.titre, {'attr': {'placeholder': "Titre de l'immobilier :"} }) }}
+            {{ form_row(formLocation.image, {'attr': {'placeholder': "Photo de l'immobilier:"} }) }#}
+            {#{ form_row(formLocation.description, {'attr': {'placeholder': "Description de l'immobilier :"} }) }#}
+
+        
+    {{ form_end(formLocation) }}
+    <button class="btn btn-success ">Register</button>
+      <br><br><br>
+    </div>
+
+</div>
+
+{% endblock %}

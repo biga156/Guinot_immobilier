@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guinot-immobilier{% endblock %}
+
+{% block body %}
+
+<div class = "jumbotron">
+       <article>
+            <h2> FORMULAIRE D'ENREGISTREMENT DE NOUVEL ARTICLE </h2>
+            <div class = "metadata"> 
+            </div>         
+       </article>      
+</div>
+<div class="container">
+
+    <div class="container">
+
+    {#Methode la plus simpmle: form()  #}
+            {#  {{ form(formVente) }} #}  
+
+    {# La Methode laplus repandue: form_widget()#}
+          {#}
+              {{ form_start(formVente) }}
+              {{ form_widget(formVente) }}    
+                  <button class="btn">Enregistez</button>
+              {{ form_end(formVente) }} 
+          #}
+    {# La Methode laplus stylé: form_widget(formVente)#}
+
+        {{ form_start(formVente) }}
+            {#{ form_row(formVente.titre, {'attr': {'placeholder': "Titre de l'immobilier :"} }) }}
+            {{ form_row(formVente.image, {'attr': {'placeholder': "Photo de l'immobilier:"} }) }#}
+            {#{ form_row(formVente.description, {'attr': {'placeholder': "Description de l'immobilier :"} }) }#}
+
+        
+    {{ form_end(formVente) }}
+    <button class="btn btn-success ">Register</button>
+      <br><br><br>
+    </div>
+
+</div>
+
+{% endblock %}

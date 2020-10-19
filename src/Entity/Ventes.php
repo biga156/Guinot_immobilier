@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\VentesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass=VentesRepository::class)
@@ -19,16 +21,29 @@ class Ventes
 
     /**
      * @ORM\Column(type="datetime")
+     * @var string A "Y-m-d H:i:s" formatted value
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *     min = 10,
+     *     max = 70,
+     *     minMessage = "Ce titre est trop court",
+     *     maxMessage = "Ce titre est trop long"
+     * )
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *   min = 10,
+     *   max = 70,
+     *   minMessage = "Ce titre est trop court",
+     *   maxMessage = "Ce titre est trop long"
+     * )
      */
     private $categorie;
 
@@ -39,6 +54,12 @@ class Ventes
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *   min = 10,
+     *   max = 70,
+     *   minMessage = "Ce titre est trop court",
+     *   maxMessage = "Ce titre est trop long"
+     * )
      */
     private $description;
 
@@ -225,4 +246,6 @@ class Ventes
 
         return $this;
     }
+
+
 }
