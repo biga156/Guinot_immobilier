@@ -1,21 +1,63 @@
 <?php
 
 namespace App\Controller;
+
+
 use App\Entity\ImmoVente;
 use App\Entity\Ventes;
 use App\Entity\Location;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-    
+    protected $entityManager;
     /** 
      * @Route("/accueil", name="accueil")
     */
     public function accueil()
     {
         return $this->render('default/accueil.html.twig');
+    }
+
+     /** 
+     * @Route("/immo/nouveau", name="immo.nouveau")
+    */   
+    public function nouveau(Request $request)
+    {
+        $entityManager = $this->entityManager;
+        $immobilier = new ImmoVente();
+
+        // Demande de al creation du Formaulaire avec CreateFormBuilder
+        $form = $this->createFormBuilder($immobilier)
+                    ->add('titre')
+                    ->add('photo')                
+                    ->add('description')    
+        //Utiser la Function GetForm pour voir le resultat Final
+                    ->getForm();
+        
+        // Traitement de la requete (http) passée en parametre
+        $form->handleRequest($request);
+
+        // Test sur le Remplissage / la soummision et la validité des champs
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            // Affectation de la Date à mon article
+            $immobilier->setCreatedAt(new \DateTime());
+
+            $entityManager->persist($immobilier);
+            $entityManager->flush();
+
+            //Enregistrement et Retour sur la page de l'article
+            return $this->redirectToRoute('immo.nouveau', ['id'=>$immobilier->getId()]);
+        }
+         
+            
+        //aPassage à Twig des Variable à afficher avec lmethode CreateView
+        return $this->render('default/nouveau.html.twig', [
+            'formImmoVente' => $form->createView()
+        ]);
     }
     
      /** 
