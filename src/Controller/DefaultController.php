@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 
-
+use App\Entity\ImmoVente;
 use App\Entity\Ventes;
 use App\Entity\Locations;
 use App\Form\VentesType;
@@ -36,7 +36,7 @@ class DefaultController extends AbstractController
     public function nouveau(Request $request)
     {
         $entityManager = $this->entityManager;
-        $vente = new Ventes();
+        $vente = new ImmoVente();
 
         // Demande de al creation du Formaulaire avec CreateFormBuilder
         $form = $this->createFormBuilder($vente)
@@ -79,17 +79,20 @@ class DefaultController extends AbstractController
 
     
      /** 
+     * @param Request $request
      * @Route("/immo/vente", name="immo.vente")
+     * @param Response
     */   
     public function venteForm(Request $request){
         
         $entityManager = $this->entityManager;
         $vente = new Ventes();
 
-        $form = $this->createForm(VentesType::class, $vente); 
+        //make:form version->
+        //$form = $this->createForm(VentesType::class, $vente); 
 
         // Demande de al creation du Formaulaire avec CreateFormBuilder
-        /*
+        
         $form = $this->createFormBuilder($vente)
                     ->add('createdAt')
                     ->add('titre')
@@ -105,7 +108,7 @@ class DefaultController extends AbstractController
                     ->add('accesibility')
         //Utiser la Function GetForm pour voir le resultat Final
                     ->getForm();
-                */
+                
         
         // Traitement de la requete (http) passée en parametre
         $form->handleRequest($request);
@@ -128,6 +131,20 @@ class DefaultController extends AbstractController
         return $this->render('default/formVente.html.twig', [
             'formVente' => $form->createView()
         ]);
+    }
+
+     /**
+     * @Route("immo/{id}/delete", name="immo_delete", methods={"DELETE"})
+     */
+    
+    public function delete(Request $request, ImmoVente $immobilier): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$immobilier->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($immobilier);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('index.accueil');
     }
 
     
@@ -173,7 +190,7 @@ class DefaultController extends AbstractController
         return $this->render('default/autre.html.twig');
     }
 
-/**
+ /**
      * 
      * @Route("/index", name="index")
      * 
@@ -183,12 +200,12 @@ class DefaultController extends AbstractController
         // Connexion à Doctrine,
         // Connexion au Repository,
         $repo = $this->getDoctrine()->getRepository(ImmoVente::class);
-        $ventes = $repo->findAll();
+        $immobiliers = $repo->findAll();
 
         return $this->render('default/index.html.twig', [
-           'controller_name' => 'DefauultController',
-            // passage du contenu de $vente
-            'vente$ventes'=>$ventes
+            'controller_name' => 'DefauultController',
+            // passage du contenu de $immobilier
+            'immobiliers' => $immobiliers
         ]);
     }
 
@@ -273,13 +290,13 @@ class DefaultController extends AbstractController
   }
   
   /**
-     * @Route("/immo/{id}", name="index.affich")
+     * @Route("/immo/{id}", name="index.affichVente")
      */
     // recuperation de l'identifiant
-    public function affich($id)
+    public function affichVente($id)
     {
         // Appel à Doctrine & au repository
-        $repo = $this->getDoctrine()->getRepository(ImmoVente::class);
+        $repo = $this->getDoctrine()->getRepository(Ventes::class);
 
         //Recherche de l'article avec son identifaint
         $immobilier = $repo->find($id);
@@ -290,5 +307,22 @@ class DefaultController extends AbstractController
         ]);
     }
     
+    /**
+     * @Route("/immo/{id}", name="index.affichLoc")
+     */
+    // recuperation de l'identifiant
+    public function affichLoc($id)
+    {
+        // Appel à Doctrine & au repository
+        $repo = $this->getDoctrine()->getRepository(Locations::class);
+
+        //Recherche de l'article avec son identifaint
+        $immobilier = $repo->find($id);
+        // Passage à Twig de tableau avec des variables à utiliser
+        return $this->render('default/affich.html.twig', [
+            'controller_name' => 'DefaultController',
+            'immoVente' => $immobilier
+        ]);
+    }
     
 }

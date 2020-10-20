@@ -16,18 +16,18 @@ class VentesFixtures extends Fixture
     
             for ($i = 1; $i <= 20; $i++) {
                 $Vente = new Ventes();
-                $Vente->setTitre("Titre n°$i ")
+                $Vente->setTitre("Immobilier n°$i ")
                     ->setCreatedAt(new \DateTime())
                     ->setCategorie("Categorie n°$i ")
                     ->setImage("http://placehold.it/300x200")
-                    ->setDescription("Description N° $i")
-                    ->setSurface("$i")
-                    ->setChambres("$i")
+                    ->setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+                    ->setSurface(mt_rand(25,300))
+                    ->setChambres(mt_rand(1,10))
                     ->setTypeMaison("Type_maison $i")
-                    ->setEtage("$i")
-                    ->setCout("$i")
+                    ->setEtage(mt_rand(1,3))
+                    ->setCout(mt_rand(1000,1000000))
                     ->setAdresse("adresse N° $i")
-                    ->setAccesibility("$i");
+                    ->setAccesibility(mt_rand(0,1));
                     
     
                 $manager->persist($Vente);

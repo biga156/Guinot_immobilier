@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Guinot-immoVente{% endblock %}
+
+{% block body %}
+
+/ Accueil
+    <div class = "jumbotron">
+        <br> GUINOT IMMOBILIER:</br>
+        <br> ACCESS LOCATION & VENTE D'APPARTEMENTS</br>
+    </div>
+
+<div class="container">
+
+    {# Affichage de mon Bien#}
+
+    <affichage>
+      {# Faisant une interpollation#}
+        <h1> {{ immoVente.titre }}</h1>
+            <p> Date de publication: {{ immoVente.createdAt | date('d/m/Y')}}</p>
+             <div class = "contenu">
+                <img src="{{ immoVente.image}}/850x300" alt=""  align="left">
+                 <p align="justify"> Categorie: {{ immoVente.categorie}}   </p> 
+                    <p align="justify"> Description: {{ immoVente.description}}   </p> 
+                    <p align="justify"> Surface: {{ immoVente.surface}} m²  </p> 
+                    <p align="justify"> {{ immoVente.TypeMaison}}   </p> 
+                    <p align="justify"> Nbr des chambres: {{ immoVente.chambres}}   </p> 
+                    <p align="justify"> Etage: {{ immoVente.etage}}   </p> 
+                    <p align="justify"> Prix: {{ immoVente.cout}}  € </p> 
+                    <p align="justify">Adresse:  {{ immoVente.adresse}}   </p> 
+                
+                 <p align="justify"> {{ immoVente.description}}   </p> 
+                 <p align="justify"> {{ immoVente.description}}   </p> 
+                 <p align="justify"> {{ immoVente.description}}   </p> 
+      
+            </div>    
+             
+                   {{ include('default/formDelete.html.twig') }}
+                    
+    </affichage>
+          <hr> </hr>
+
+</div>
+
+{% endblock %}

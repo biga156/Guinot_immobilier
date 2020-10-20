@@ -20,14 +20,14 @@ class LocationsFixtures extends Fixture
                 ->setCreatedAt(new \DateTime())
                 ->setCategorie("Categorie n°$i ")
                 ->setImage("http://placehold.it/300x200")
-                ->setDescription("Description N° $i")
-                ->setSurface("$i")
-                ->setChambres("$i")
+                ->setDescription("Lorem ipsum dolor sit amet, consectetur adipiscing elit")
+                ->setSurface(mt_rand(25,300))
+                ->setChambres(mt_rand(1,10))
                 ->setTypeMaison("Type_maison $i")
                 ->setEtage(mt_rand(1,3) )
-                ->setCout("$i")
+                ->setCout(mt_rand(1000,1000000))
                 ->setAdresse("adresse N° $i")
-                ->setAccesibilite("$i");
+                ->setAccesibilite(mt_rand(0,1));
                 
 
             $manager->persist($Location);
