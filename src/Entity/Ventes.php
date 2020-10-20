@@ -28,8 +28,8 @@ class Ventes
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
-     *     min = 10,
-     *     max = 70,
+     *     min = 5,
+     *     max = 255,
      *     minMessage = "Ce titre est trop court",
      *     maxMessage = "Ce titre est trop long"
      * )
@@ -40,7 +40,7 @@ class Ventes
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
      *   min = 10,
-     *   max = 70,
+     *   max = 255,
      *   minMessage = "Ce titre est trop court",
      *   maxMessage = "Ce titre est trop long"
      * )

@@ -120,7 +120,7 @@ class DefaultController extends AbstractController
             $entityManager->flush();
 
             //Enregistrement et Retour sur la page de l'article
-            return $this->redirectToRoute('immo.vente', ['id'=>$vente->getId()]);
+            return $this->redirectToRoute('test', ['id'=>$vente->getId()]);
         }
          
             
