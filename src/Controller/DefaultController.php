@@ -36,7 +36,7 @@ class DefaultController extends AbstractController
     public function nouveau(Request $request)
     {
         $entityManager = $this->entityManager;
-        $vente = new ImmoVente();
+        $vente = new Ventes();
 
         // Demande de al creation du Formaulaire avec CreateFormBuilder
         $form = $this->createFormBuilder($vente)
