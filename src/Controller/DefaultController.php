@@ -6,10 +6,12 @@ use App\Entity\ImmoVente;
 use App\Entity\Ventes;
 use App\Entity\Locations;
 use App\Form\LocationsType;
+use App\Form\VentesType;
 
 use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -27,14 +29,14 @@ class DefaultController extends AbstractController
      * @Route("/immo/vente", name="immo.vente")
      * @param Response
     */   
-    public function venteForm(Request $request){
+    public function venteForm(Request $request):Response{
         
         $entityManager = $this->entityManager;
         $vente = new Ventes();
 
         //make:form version->
-        //$form = $this->createForm(VentesType::class, $vente); 
-
+        $form = $this->createForm(VentesType::class, $vente); 
+/*
         // Demande de al creation du Formaulaire avec CreateFormBuilder
         
         $form = $this->createFormBuilder($vente)
@@ -52,7 +54,7 @@ class DefaultController extends AbstractController
                     ->add('accesibility')
         //Utiser la Function GetForm pour voir le resultat Final
                     ->getForm();
-                
+                */
         
         // Traitement de la requete (http) passée en parametre
         $form->handleRequest($request);
